@@ -1,5 +1,7 @@
 class dhcp::config {
 
+  require router
+
   concat { '/etc/radvd.conf':
     ensure         => present,
     user           => 'root',
