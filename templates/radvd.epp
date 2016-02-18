@@ -1,0 +1,7 @@
+interface <%= $interface %> {
+  AdvSendAdvert on;
+  AdvLinkMTU 1312;
+  RDNSS fd74:fdaa:9dc4::24:1 {};
+  prefix <%= ip_address($prefix) %>/64 {};
+};
+

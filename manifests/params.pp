@@ -1,0 +1,6 @@
+class dhcp::params {
+
+  
+
+}
+
