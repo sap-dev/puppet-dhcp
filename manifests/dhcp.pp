@@ -13,7 +13,7 @@ define dhcp::dhcp (
   $self = ip_network($subnet, 1)
   $self6 = ip_network($subnet6, 1)
 
-  dnsmasq::dhcp { "dhcp-${title}": 
+  dnsmasq::dhcp { "dhcp-${title}":
     paramtag   => $interface,
     paramset   => 'dhcp',
     dhcp_start => ip_network($subnet, 2),
