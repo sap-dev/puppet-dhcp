@@ -14,6 +14,8 @@
 
 Manages DHCP service for the Freifunk Nordwest network.
 
+The first IP of each subnet is reserved for other purposes.
+
 ## Setup
 
 ### Beginning with dhcp
@@ -22,7 +24,7 @@ Manages DHCP service for the Freifunk Nordwest network.
 dhcp::dhcp { 'ol-nord':
   interface => 'bat-ol-nord',
   subnet    => '10.18.8.0/21',
-  subnet6   => '2a03:2260:1001:0800::/53',
+  subnet6   => [ '2a03:2260:1001:0800::/53' ],
 }
 ```
 
@@ -32,7 +34,7 @@ dhcp::dhcp { 'ol-nord':
 dhcp::dhcp { 'ol-nord':
   interface => 'bat-ol-nord',
   subnet    => '10.18.8.0/21',
-  subnet6   => '2a03:2260:1001:0800::/53',
+  subnet6   => [ '2a03:2260:1001:0800::/53' ],
 }
 ```
 
@@ -41,7 +43,7 @@ dhcp::dhcp { 'ol-nord':
 * define dhcp::dhcp
   * $interface
   * $subnet
-  * $subnet6
+  * $subnet6 (optional, default [])
   * $leasetime (optional, default '1h')
 
 ## Limitations
