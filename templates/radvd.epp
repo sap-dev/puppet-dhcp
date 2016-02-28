@@ -1,3 +1,6 @@
+<%- | String        $interface,
+      Array[String] $subnet6,
+| -%>
 interface <%= $interface %> {
   AdvSendAdvert on;
   AdvLinkMTU 1312;

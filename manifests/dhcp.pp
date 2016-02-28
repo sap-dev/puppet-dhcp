@@ -21,7 +21,7 @@ define dhcp::dhcp (
 
   concat::fragment { "dhcp-${title}":
     target  => '/etc/radvd.conf',
-    content => epp('dhcp/radvd.epp'),
+    content => epp('dhcp/radvd.epp', { interface => $interface, subnet6 => $subnet6 }),
     order   => '20',
   }
 
