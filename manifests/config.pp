@@ -1,6 +1,6 @@
 class dhcp::config {
 
-  require router
+  include router
 
   concat { '/etc/radvd.conf':
     ensure         => present,

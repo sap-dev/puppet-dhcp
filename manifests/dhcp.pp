@@ -5,10 +5,10 @@ define dhcp::dhcp (
   String        $leasetime = '1h',
 ) {
 
-  require dhcp
-  require dhcp::params
+  include dhcp
+  include dhcp::params
 
-  require network
+  include network
 
   dnsmasq::dhcp { "dhcp-${title}":
     paramtag   => $interface,
