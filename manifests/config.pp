@@ -4,7 +4,7 @@ class dhcp::config {
 
   concat { '/etc/radvd.conf':
     ensure         => present,
-    user           => 'root',
+    owner          => 'root',
     group          => 'root',
     mode           => '0644',
     ensure_newline => true,
