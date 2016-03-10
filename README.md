@@ -21,6 +21,11 @@ The first IP of each subnet is reserved for other purposes.
 ### Beginning with dhcp
 
 ```puppet
+class { 'dhcp':
+  dnsserver1 => '10.18.0.1',
+  dnsserver2 => '10.18.0.2',
+}
+
 dhcp::dhcp { 'ol-nord':
   interface => 'bat-ol-nord',
   subnet    => '10.18.8.0/21',
@@ -31,6 +36,11 @@ dhcp::dhcp { 'ol-nord':
 ## Usage
 
 ```puppet
+class { 'dhcp':
+  dnsserver1 => '10.18.0.1',
+  dnsserver2 => '10.18.0.2',
+}
+
 dhcp::dhcp { 'ol-nord':
   interface => 'bat-ol-nord',
   subnet    => '10.18.8.0/21',
@@ -40,11 +50,15 @@ dhcp::dhcp { 'ol-nord':
 
 ## Reference
 
+* class dhcp
+  * dnsserver1 (optional)
+  * dnsserver2 (optional)
+
 * define dhcp::dhcp
-  * $interface
-  * $subnet
-  * $subnet6 (optional, default [])
-  * $leasetime (optional, default '1h')
+  * interface
+  * subnet
+  * subnet6 (optional, default [])
+  * leasetime (optional, default '1h')
 
 ## Limitations
 

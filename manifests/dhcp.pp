@@ -1,8 +1,8 @@
 define dhcp::dhcp (
-  String        $interface,
-  String        $subnet,
-  Array[String] $subnet6 = [],
-  String        $leasetime = '1h',
+  String           $interface,
+  String           $subnet,
+  Array[String]    $subnet6   = [],
+  String           $leasetime = '1h',
 ) {
 
   include dhcp
@@ -17,6 +17,22 @@ define dhcp::dhcp (
     dhcp_end   => ip_address(ip_broadcast($subnet, 1)),
     netmask    => ip_netmask($subnet),
     lease_time => $leasetime,
+  }
+
+  if $dhcp::dnsserver1 {
+    $dnsserver1 = "${dhcp::dnsserver1}"
+    if $dhcp::dnsserver2 {
+      $dnsserver2 = ",${dhcp::dnsserver2}"
+    } else {
+      $dnsserver2 = ''
+    }
+    dnsmasq::dhcpoption { '6':
+      content  => "${dnsserver1}${dnsserver2}",
+      paramtag => 'dhcp',
+    }
+  } else {
+    $dnsserver1 = ''
+    $dnsserver2 = ''
   }
 
   concat::fragment { "dhcp-${title}":
