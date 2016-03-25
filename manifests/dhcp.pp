@@ -38,8 +38,10 @@ define dhcp::dhcp (
   concat::fragment { "dhcp-${title}":
     target  => '/etc/radvd.conf',
     content => epp('dhcp/radvd.epp', {
-      interface => $interface,
-      subnet6 => $subnet6
+      interface  => $interface,
+      subnet6    => $subnet6,
+      dnsserver1 => $dhcp::dnsserver6_1,
+      dnsserver2 => $dhcp::dnsserver6_2
     }),
     order   => '20',
   }

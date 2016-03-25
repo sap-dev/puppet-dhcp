@@ -22,8 +22,10 @@ The first IP of each subnet is reserved for other purposes.
 
 ```puppet
 class { 'dhcp':
-  dnsserver1 => '10.18.0.1',
-  dnsserver2 => '10.18.0.2',
+  dnsserver1   => '10.18.0.1',
+  dnsserver2   => '10.18.0.2',
+  dnsserver6_1 => 'fe80::1',
+  dnsserver6_2 => 'fe80::2',
 }
 
 dhcp::dhcp { 'ol-nord':
@@ -37,8 +39,10 @@ dhcp::dhcp { 'ol-nord':
 
 ```puppet
 class { 'dhcp':
-  dnsserver1 => '10.18.0.1',
-  dnsserver2 => '10.18.0.2',
+  dnsserver1   => '10.18.0.1',
+  dnsserver2   => '10.18.0.2',
+  dnsserver6_1 => 'fe80::1',
+  dnsserver6_2 => 'fe80::2',
 }
 
 dhcp::dhcp { 'ol-nord':
@@ -53,6 +57,8 @@ dhcp::dhcp { 'ol-nord':
 * class dhcp
   * dnsserver1 (optional)
   * dnsserver2 (optional)
+  * dnsserver6_1 (optional)
+  * dnsserver6_2 (optional)
 
 * define dhcp::dhcp
   * interface
