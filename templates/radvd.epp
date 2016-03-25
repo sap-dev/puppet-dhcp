@@ -1,5 +1,7 @@
-<%- | String        $interface,
-      Array[String] $subnet6,
+<%- | String           $interface,
+      Array[String]    $subnet6,
+      Optional[String] $dnsserver1,
+      Optional[String] $dnsserver2,
 | -%>
 interface <%= $interface %> {
   AdvSendAdvert on;
