@@ -9,6 +9,7 @@ define dhcp::dhcp (
   include dhcp::params
 
   include network
+  include dnsmasq
 
   dnsmasq::dhcp { "dhcp-${title}":
     paramtag   => $interface,
