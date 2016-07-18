@@ -10,7 +10,10 @@ interface <%= $interface %> {
   RDNSS <%= $dnsserver1 %><%= if $dnsserver2 { " ${dnsserver2}" } else { '' } %> {};
 <% } -%>
 <% $subnet6.each | $value | { -%>
-  prefix <%= ip_network($value, 0) %> {};
+  prefix <%= ip_network($value, 0) %> {
+	AdvPreferredLifetime 20;
+	AdvValidLifetime 30;
+  };
 <% } -%>
 };
 
